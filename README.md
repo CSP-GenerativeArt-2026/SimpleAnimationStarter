@@ -16,18 +16,15 @@ Call these before using the drawing functions.
 ```python
 def set_fill_color(color_name):
     """Sets the inside color for shapes drawn after this point."""
-    global _fill_color
-    _fill_color = color_name
+    ...
 
 def set_outline_color(color_name):
     """Sets the border color for shapes drawn after this point."""
-    global _outline_color
-    _outline_color = color_name
+    ...
 
 def set_line_thickness(thickness):
     """Sets the thickness of lines and shape borders."""
-    global _line_thickness
-    _line_thickness = thickness
+    ...
 ```
 
 ## Example drawing functions
@@ -35,15 +32,22 @@ Call these with appropriate arguments. If you call this with an x or y coordinat
 inside the draw_frame() function (see below) you can create moving objects. 
 
 ```python
+
+def fill_background(color_name):
+    """Fills the entire canvas with one solid color."""
+    ...
+
+def draw_line(x1, y1, x2, y2):
+    """Draws a line connecting point (x1, y1) to point (x2, y2)."""
+   ...
+
 def fill_circle(center_x, center_y, radius):
     """Draws a solid circle given its center point and radius."""
-    _canvas.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, 
-                        fill=_fill_color, outline=_outline_color, width=_line_thickness)
+    ...
 
 def draw_circle(center_x, center_y, radius):
     """Draws an empty circle outline given its center point and radius."""
-    _canvas.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, 
-                        fill="", outline=_outline_color, width=_line_thickness)
+    ...
 ```
 
 ## Example coordinate functions for movement (based on frame number)
