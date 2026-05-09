@@ -40,3 +40,37 @@ def draw_circle(center_x, center_y, radius):
     _canvas.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, 
                         fill="", outline=_outline_color, width=_line_thickness)
 ```
+
+Example coordinate mapping functions (based on frame number)
+```
+def loop_motion(start_val, end_val, speed, frame_number):
+    """
+    Moves a value from start_val to end_val at the given speed.
+    When it reaches end_val, it instantly teleports back to start_val.
+    """
+    # Calculate the total distance it is allowed to travel
+    travel_range = end_val - start_val
+    
+    # Calculate how far it has moved, wrapping around using modulo
+    distance_moved = (frame_number * speed) % travel_range
+    
+    # Return the new current position
+    return start_val + distance_moved
+
+# Here's an alternative function that loops based on a fixed number of frames
+def loop_frames(start_val, end_val, total_frames, frame_number):
+    """
+    Moves from start_val to end_val taking exactly 'total_frames' to complete.
+    Once total_frames is reached, it restarts at start_val.
+    """
+    # Calculate how far along we are in the current cycle (0.0 to 1.0)
+    # Using modulo (%) keeps the frame counter wrapping around the total_frames limit
+    progress = (frame_number % total_frames) / total_frames
+    
+    # Calculate the total distance
+    total_distance = end_val - start_val
+    
+    # Return the starting position plus the percentage of distance covered
+    return start_val + (total_distance * progress)
+```
+
