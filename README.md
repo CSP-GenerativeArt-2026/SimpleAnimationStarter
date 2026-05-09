@@ -42,7 +42,7 @@ def draw_circle(center_x, center_y, radius):
 ```
 
 Example coordinate mapping functions (based on frame number)
-```
+```python
 def loop_motion(start_val, end_val, speed, frame_number):
     """
     Moves a value from start_val to end_val at the given speed.
@@ -74,3 +74,31 @@ def loop_frames(start_val, end_val, total_frames, frame_number):
     return start_val + (total_distance * progress)
 ```
 
+Usage:  users should import this module into a separate script, such as my_animation.py
+then use the functions inside a draw_frame function body. 
+
+
+```python
+import simple_animation as sa
+
+def draw_frame(frame_number, elapsed_seconds, width, height):
+    """Draws one frame of an animation. Called approx 60 times per second."""
+    # ==================================
+    # Student code goes below this part
+    # ==================================
+    sa.fill_background("white") # Clear the background for this frame
+   
+   # Example Animation: A moving circle
+    x_ball = sa.loop_motion(0, width, 5.0, frame_number) # x coordinate
+    
+    sa.set_fill_color("red")
+    
+    sa.fill_circle(x_ball, height / 2, 40)
+    
+    
+
+
+if __name__ == "__main__":
+    # Launch the wrapper and tell it to use our draw_frame function
+    sa.start(draw_frame)
+```
