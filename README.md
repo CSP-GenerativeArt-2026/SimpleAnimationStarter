@@ -10,7 +10,9 @@ This is intended to function as a library or drawing API; it contains functions 
 adjusting the state of the canvas tools (such as setting fill color, line thinkness, etc),
 and helper functions for determining coordinates for different types of motion. 
 
-Examples of functions that adjust drawing state:
+## Examples of functions that adjust drawing state:
+Call these before using the drawing functions.
+
 ```python
 def set_fill_color(color_name):
     """Sets the inside color for shapes drawn after this point."""
@@ -28,7 +30,10 @@ def set_line_thickness(thickness):
     _line_thickness = thickness
 ```
 
-Example drawing functions
+## Example drawing functions
+Call these with appropriate arguments. If you call this with an x or y coordinate that changes
+inside the draw_frame() function (see below) you can create moving objects. 
+
 ```python
 def fill_circle(center_x, center_y, radius):
     """Draws a solid circle given its center point and radius."""
@@ -41,7 +46,12 @@ def draw_circle(center_x, center_y, radius):
                         fill="", outline=_outline_color, width=_line_thickness)
 ```
 
-Example coordinate mapping functions (based on frame number)
+## Example coordinate functions for movement (based on frame number)
+These are used so you don't need to use framenumber directly to calculate positions 
+of moving objects. Just pick one for the type of motion you want, call with 
+appropriate arguments (including frame_number from draw_frame function) and use the
+returned value in your code. See example below in next section. 
+
 ```python
 def loop_motion(start_val, end_val, speed, frame_number):
     """
@@ -75,6 +85,13 @@ def oscillate_frames(min_val, max_val, total_frames, frame_number):
 Usage:  users should import this module into a separate script, such as my_animation.py
 then use the functions inside a draw_frame function body. 
 
+# my_animation.py
+In this file you'll write the code to draw your scene or animation. All changes should go
+inside the draw_frame function, unless you're defining additional funtions to help organize
+the code.
+
+Any additional drawing functions or movement functions should instead go into the 
+other file: simple_animation.py
 
 ```python
 import simple_animation as sa
@@ -86,11 +103,13 @@ def draw_frame(frame_number, elapsed_seconds, width, height):
     # ==================================
     sa.fill_background("white") # Clear the background for this frame
    
-   # Example Animation: A moving circle
+   # Example Animation: A moving circle in x-direction
+    # use the loop_motion funtion to figure out x-coordinate: x_ball
     x_ball = sa.loop_motion(0, width, 5.0, frame_number) # x coordinate
     
     sa.set_fill_color("red")
-    
+
+    # draw the ball; note x coordinate is calculated above; y coord is constant
     sa.fill_circle(x_ball, height / 2, 40)
     
     
