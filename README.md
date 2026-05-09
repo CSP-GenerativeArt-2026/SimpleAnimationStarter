@@ -50,7 +50,6 @@ def loop_motion(start_val, end_val, speed, frame_number):
     """
     ...
 
-# Here's an alternative function that loops based on a fixed number of frames
 def loop_frames(start_val, end_val, total_frames, frame_number):
     """
     Moves from start_val to end_val taking exactly 'total_frames' to complete.
