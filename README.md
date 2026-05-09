@@ -2,8 +2,9 @@
 Starter code for simple animations made with Tkinter canvas. 
 
 This repository contains two Python code files:
-simple_animation.py 
+simple_animation.py  and 
 my_animation.py
+which will be used for the generative art project
 
 # simple_animation.py
 This is intended to function as a library or drawing API; it contains functions for drawing basic shapes, 
@@ -123,3 +124,9 @@ if __name__ == "__main__":
     # Launch the wrapper and tell it to use our draw_frame function
     sa.start(draw_frame)
 ```
+
+# Project Goals
+
+In this project you'll create a static scene or animation. You'll need to do the following:
+- expand on the functionality of the library by adding additional functions for drawing and/or movement
+- use the available functions to create your scene or animation in my_animation.py
