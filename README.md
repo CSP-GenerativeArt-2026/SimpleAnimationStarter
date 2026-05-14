@@ -91,11 +91,11 @@ Usage:  users should import this module into a separate script, such as my_anima
 then use the functions inside a draw_frame function body. 
 
 # my_animation.py
-In this file you'll write the code to draw your scene or animation. All changes should go
-inside the draw_frame function, unless you're defining additional funtions to help organize
-the code.
+In this file you'll write the code to draw your scene or animation. Most changes should go
+inside the draw_frame function, unless you're defining additional functions or variables
+to help organize the code.
 
-Any additional drawing functions or movement functions should instead go into the 
+Any additional basic drawing functions or movement functions should instead go into the 
 other file: simple_animation.py
 
 ```python
